@@ -1,0 +1,55 @@
+#mainText{
+  justify-self: center;
+  align-self: start;
+  margin-top:8rem;
+}
+#welcomeText{
+  font-size: 3rem;
+  color:var(--black);
+
+  padding-bottom: .5rem;
+}
+#welcomeTextUnderline{
+  width: 100%;
+  height: 5px;
+  background: var(--main-color);
+}
+
+
+#samName{
+  font-weight: bold;
+  color: var(--main-color);
+  margin-left:1rem;
+}
+#subText{
+  margin-top:1.3rem;
+
+  font-size:1.8rem;
+  display:flex;
+  gap:10px;
+  flex-direction: column;
+  color:var(--secondary-color);
+}
+#subText div:nth-child(1){
+  margin-left: 1rem;
+}
+#subText div:nth-child(2){
+  margin-left: 2rem;
+}
+#subText div:nth-child(3){
+  margin-left: 3rem;
+}
+.subLink{
+  cursor:pointer;
+}
+
+#stackedCardsWrapper{
+  margin-top:8rem;
+  width: 31rem;
+  height: 20rem;
+}
+.imageCardImageWrapper{
+  position:relative;
+  width: 100%;
+  height: 100%;
+}

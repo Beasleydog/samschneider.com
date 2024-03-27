@@ -1,0 +1,48 @@
+html{
+    font-size:16px;
+}
+body{
+    background:#FBFFFD;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    top:0;
+    left:0;
+    position: absolute;
+
+    --main-color:#DB2B39;
+    --secondary-color:#E4626D;
+    --super-light-main:#F6CBCE;
+
+    --black:#070707;
+    --light-black:#40434E;
+}
+.twoColumns{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+.fancyLink{
+    cursor:pointer;
+    position:relative;
+    text-decoration:none;
+    font-weight:bold;
+    transition: color 0.2s;
+}
+.fancyLink::after{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:4px;
+    background:var(--secondary-color);
+    bottom:0;
+    left:0;
+    transform:scaleX(0);
+    transform-origin:bottom right;
+    transition:transform 0.2s;
+}
+.fancyLink:hover::after{
+    transform:scaleX(1);
+    transform-origin:bottom left;
+}
+

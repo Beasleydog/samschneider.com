@@ -1,0 +1,4 @@
+.backgroundCircle{
+    border-radius:50%;
+    background:var(--super-light-main);
+}
