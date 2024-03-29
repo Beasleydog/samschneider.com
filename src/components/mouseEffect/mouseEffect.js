@@ -46,7 +46,6 @@ export default function MouseEffect({ children }) {
     }, []);
 
     const handleMouseMove = useCallback((e) => {
-        console.log(e.target);
         if (recursivelyCheckForNoMouseEffect(e.target)) {
             setMinimized(true);
         } else {

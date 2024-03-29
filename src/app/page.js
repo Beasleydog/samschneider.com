@@ -10,11 +10,9 @@ import clsx from "clsx";
 import { FaGithub } from "react-icons/fa";
 
 export default function Home() {
-  console.log(document.referrer);
   const [linkAnimation, setLinkAnimation] = useState(false);
 
-  const littleAnimations = !(document.referrer && (new URL(document.referrer).origin === location.origin));
-  console.log(littleAnimations);
+  const littleAnimations = !(window.document.referrer && (new URL(window.document.referrer).origin === location.origin));
   function handleLinkClickAnimation() {
     return new Promise((resolve) => {
       setLinkAnimation(true);
