@@ -13,7 +13,7 @@ export default function BouncyText({ children, direction, bounceScale }) {
     const [states, setStates] = useState(new Array(characters.length).fill({ offset: 0, velocity: 0, acceleration: 0 }));
 
     //Handle physics
-    const k = .1;
+    const k = .05;
 
     useEffect(() => {
         const loop = () => {
@@ -23,10 +23,10 @@ export default function BouncyText({ children, direction, bounceScale }) {
 
                     //Move towards our neighbors
                     if (prevStates[index - 1]) {
-                        newAcceleration += prevStates[index - 1].offset * .04;
+                        newAcceleration += prevStates[index - 1].offset * .02;
                     }
                     if (prevStates[index + 1]) {
-                        newAcceleration += prevStates[index + 1].offset * .04;
+                        newAcceleration += prevStates[index + 1].offset * .02;
                     }
 
                     let newVelocity = velocity + newAcceleration - .1 * velocity;
@@ -35,11 +35,11 @@ export default function BouncyText({ children, direction, bounceScale }) {
                     //Trim to 2 decimal places to prevent laggy DOM stuff
                     newOffset = Math.round(newOffset * 100) / 100;
 
-                    const max = 30;
-                    if (Math.abs(newOffset) > max) {
-                        newOffset = Math.sign(newOffset) * max;
-                        newVelocity *= -.8;
-                    }
+                    // const max = 30;
+                    // if (Math.abs(newOffset) > max) {
+                    //     newOffset = Math.sign(newOffset) * max;
+                    //     newVelocity *= -.8;
+                    // }
                     return {
                         offset: newOffset,
                         velocity: newVelocity,
@@ -75,7 +75,7 @@ export default function BouncyText({ children, direction, bounceScale }) {
     return (
         <span>
             {characters.map((character, index) => (
-                <BouncyCharacter index={index} onHover={onCharHovered} direction={direction} offset={states[index].offset}>
+                <BouncyCharacter key={index} index={index} onHover={onCharHovered} direction={direction} offset={states[index].offset}>
                     {character === " " ? <>&nbsp;</> : character}
                 </BouncyCharacter>
             ))}
@@ -95,6 +95,7 @@ function BouncyCharacter({ children, onHover, index, offset, direction }) {
     }
     return (
         <span
+            key={index}
             onMouseOver={() => { onHover(index) }}
             className={bouncyText.bouncyCharacter}
             style={offsetEffect}

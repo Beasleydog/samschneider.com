@@ -1,68 +1,127 @@
+"use client"
+
 import homeStyles from "./homeStyles.module.css";
 import BouncyText from "@/components/bouncyText/bouncyText";
-import StackedCards from "@/components/stackedCards/stackedCards";
-import Image from "next/image";
+import { motion } from "framer-motion";
+import { NoMouseEffect } from "@/components/mouseEffect/mouseEffect";
+import { useState } from "react";
+import MouseEffect from "@/components/mouseEffect/mouseEffect";
+import clsx from "clsx";
+import { FaGithub } from "react-icons/fa";
+
 export default function Home() {
+  console.log(document.referrer);
+  const [linkAnimation, setLinkAnimation] = useState(false);
+
+  const littleAnimations = !(document.referrer && (new URL(document.referrer).origin === location.origin));
+  console.log(littleAnimations);
+  function handleLinkClickAnimation() {
+    return new Promise((resolve) => {
+      setLinkAnimation(true);
+      setTimeout(() => {
+        resolve();
+      }, 1000);
+    });
+  }
+
   return (
-    <div id="mainWrapper">
-      <div className="twoColumns">
-        <span id={homeStyles.mainText}>
-          <div id={homeStyles.welcomeText}>
-            <div>
-              Hi,
-              <br />
-              I`m
-              <span id={homeStyles.samName}>
-                <BouncyText>
-                  Sam Schneider
-                </BouncyText>
+    <MouseEffect>
+      <motion.div
+        initial={!littleAnimations && { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: .5 }}
+      >
+        <div id="mainWrapper">
+          <div id={homeStyles.mainText}>
+            <div id={homeStyles.welcomeText}>
+              <div>
+                <motion.span
+                  style={{ display: "inline-block" }}
+                  initial={littleAnimations && { opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: .5 }}
+                >
+                  Hi,
+                </motion.span>
+                <br />
+                <motion.span
+                  style={{ display: "inline-block" }}
+                  initial={littleAnimations && { opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1, duration: .5 }}
+                >
+                  I`m
+                  <NoMouseEffect>
+                    <span id={homeStyles.samName}>
+                      <BouncyText>
+                        Sam Schneider
+                      </BouncyText>
+
+                    </span>
+                  </NoMouseEffect>
+                </motion.span>
+              </div>
+            </div>
+            <NoMouseEffect style={{ width: "fit-content" }}>
+              <span id={homeStyles.subText}>
+                <motion.div
+                  style={{ width: "fit-content" }}
+                  initial={littleAnimations && { opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.8, duration: .5 }}
+                >
+                  <SubLink href="/sites" onClick={handleLinkClickAnimation}>Website Developer.</SubLink>
+                </motion.div>
+                <motion.div
+                  style={{ width: "fit-content" }}
+                  initial={littleAnimations && { opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 2, duration: .5 }}
+                >
+                  <SubLink href="/games" onClick={handleLinkClickAnimation}>Game Designer.</SubLink>
+                </motion.div>
+                <motion.div
+                  style={{ width: "fit-content" }}
+                  initial={littleAnimations && { opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 2.2, duration: .5 }}
+                >
+                  <SubLink href="/projects" onClick={handleLinkClickAnimation}>Software Engineer.</SubLink>
+                </motion.div>
               </span>
-            </div>
-            {/* <div id={homeStyles.welcomeTextUnderline} /> */}
+            </NoMouseEffect>
+
+            <motion.span
+              initial={littleAnimations && { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2.4, duration: .5 }}
+            >
+              <NoMouseEffect>
+                <div id={homeStyles.contactText}>
+                  <a id={homeStyles.socialButtons} href="https://github.com/beasleydog" target="_blank">
+                    <FaGithub id={homeStyles.githubButton} className={homeStyles.socialButton} />
+                  </a>
+                  <a id={homeStyles.emailButton} href="mailto:samschneider8306@gmail.com">Email Me! <a>👋</a></a>
+                </div>
+              </NoMouseEffect>
+            </motion.span>
           </div>
-          <div id={homeStyles.subText}>
-            <div>
-              <SubLink>Software Engineer.</SubLink>
-            </div>
-            <div>
-              <SubLink>Game Developer.</SubLink>
-            </div>
-            <div>
-              <SubLink>Maker.</SubLink>
-            </div>
+          <div id={homeStyles.thing} className={clsx(linkAnimation && homeStyles.thingCover)}>
           </div>
-        </span>
-        <div id={homeStyles.stackedCardsWrapper}>
-          <StackedCards cards={getImageCards()} />
-        </div>
-      </div>
-    </div >
+        </div >
+      </motion.div >
+    </MouseEffect>
   );
 }
-function getImageCards() {
-  const wrap = (content) => <div className={homeStyles.imageCardImageWrapper}>{content}</div>;
-  const images = [
-    "/images/ballCombine.png",
-    "/images/collaborativeCrossword.png",
-    "/images/customTab.png",
-    "/images/guitarChess.png",
-    "/images/planscape.png",
-    "/images/scrambled.png",
-    "/images/seekingConnection.png",
-    "/images/udplGenres.png",
-  ]
+function SubLink({ children, href, onClick }) {
+  async function click() {
+    if (onClick) await onClick();
+    location.replace(href);
+  }
   return (
-    images.map((image) => {
-      return wrap(<Image src={image} fill style={{ objectFit: "cover" }} />)
-    })
-  )
-}
-function SubLink({ children, href }) {
-  return (
-    <a href
+    <a
+      onClick={click}
       className="fancyLink"
-      target="_blank"
-      rel="noreferrer"
     >
       {children}
     </a>

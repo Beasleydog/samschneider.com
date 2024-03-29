@@ -1,4 +1,5 @@
 .bouncyCharacter{
     display: inline-block;
     transition : transform 0.1s;
+    user-select: none;
 }

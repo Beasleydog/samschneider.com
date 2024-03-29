@@ -1,10 +1,12 @@
 #mainText{
-  justify-self: center;
-  align-self: start;
   margin-top:8rem;
+  margin-left:8rem;
+  font-weight: bold;
+  display: flex;
+    flex-direction: column;
 }
 #welcomeText{
-  font-size: 3rem;
+  font-size: 5rem;
   color:var(--black);
 
   padding-bottom: .5rem;
@@ -17,7 +19,7 @@
 
 
 #samName{
-  font-weight: bold;
+  font-weight: bolder;
   color: var(--main-color);
   margin-left:1rem;
 }
@@ -43,13 +45,86 @@
   cursor:pointer;
 }
 
-#stackedCardsWrapper{
-  margin-top:8rem;
-  width: 31rem;
-  height: 20rem;
+#thing{
+  position: fixed;
+  top: 50%;
+  right:0;
+  width: 40rem;
+  height: 200vh;
+  background: var(--main-color);
+  mix-blend-mode: difference;
+  transform: rotate(-4deg) translateY(-50%) translateX(50%);
+  z-index: 1;
+  pointer-events: none;
 }
-.imageCardImageWrapper{
-  position:relative;
-  width: 100%;
-  height: 100%;
+.thingCover{
+  animation-name:thingCover;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; 
+  mix-blend-mode: unset !important;
+  background:var(--main-color) !important;
+}
+@keyframes thingCover{
+  0%{
+    transform: rotate(-4deg) translateY(-50%) translateX(50%);
+  }
+  100%{   
+    transform: rotate(-4deg) translateY(-50%) scaleX(4)
+  }
+}
+#contactText{
+  margin-top: 1.5rem;
+  padding-top:1.5rem;
+  padding-right: 5rem;
+  /* border-top:var(--super-light-main) 3px solid; */
+  width: -moz-fit-content;
+   width: fit-content;
+  font-size:1.75rem;
+  color:var(--light-black);
+  display:flex;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+#githubButton{
+  cursor:pointer;
+}
+#socialButtons{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding-right: 1rem;
+  border-right: var(--light-black) 3px solid;
+}
+.socialButton{
+  transition:fill .2s;
+}
+.socialButton:hover{
+  fill:var(--secondary-color)
+}
+#emailButton{
+  border-radius:2rem;
+  text-decoration: none;
+  padding:.5rem;
+  font-size:1.25rem;
+  transition:color .2s;
+}
+#emailButton:hover{
+  color:var(--secondary-color);
+}
+#emailButton:hover a{
+  display: inline-block;
+  transform-origin: 100% 100%;
+  animation: wave .5s infinite;
+}
+@keyframes wave{
+  0%{
+    transform:rotate(0deg);
+  }
+  50%{
+    transform:rotate(10deg);
+  }
+  100%{
+    transform:rotate(0deg);
+  }
 }

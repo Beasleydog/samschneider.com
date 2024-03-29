@@ -2,7 +2,6 @@ html{
     font-size:16px;
 }
 body{
-    background:#FBFFFD;
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -12,6 +11,7 @@ body{
     position: absolute;
 
     --main-color:#DB2B39;
+    --opposite-main-color:#24d4c6;
     --secondary-color:#E4626D;
     --super-light-main:#F6CBCE;
 
@@ -45,4 +45,6 @@ body{
     transform:scaleX(1);
     transform-origin:bottom left;
 }
-
+a{
+    color:unset;
+}

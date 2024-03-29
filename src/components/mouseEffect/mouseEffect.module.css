@@ -1,0 +1,28 @@
+#container{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    z-index:1000;
+}
+#thing{
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: var(--main-color);
+    mix-blend-mode: difference;
+    pointer-events: none;
+    transition: opacity 0.1s,width 0.1s,height 0.1s,transform .1s, border .1s, background-color .1s; 
+}
+.minimized{
+    opacity:.08;
+    width: 3rem !important;
+    height: 3rem !important;
+    box-shadow: var(--main-color) 0px 0px 10px;
+}
+.hovered{
+    width:2rem !important;
+    height: 2rem !important;
+}
