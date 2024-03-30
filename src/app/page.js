@@ -78,7 +78,7 @@ export default function Home() {
                   animate={littleAnimations && { opacity: 1, x: 0 }}
                   transition={littleAnimations && { delay: 1.8, duration: .5 }}
                 >
-                  <SubLink href="/sites" onClick={handleLinkClickAnimation}>Website Developer.</SubLink>
+                  <SubLink href="/sites" onClick={handleLinkClickAnimation}>Website Developer</SubLink>
                 </motion.div>
                 <motion.div
                   style={{ width: "fit-content" }}
@@ -86,7 +86,7 @@ export default function Home() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 2, duration: .5 }}
                 >
-                  <SubLink href="/games" onClick={handleLinkClickAnimation}>Game Designer.</SubLink>
+                  <SubLink href="/games" onClick={handleLinkClickAnimation}>Game Designer</SubLink>
                 </motion.div>
                 <motion.div
                   style={{ width: "fit-content" }}
@@ -94,7 +94,7 @@ export default function Home() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 2.2, duration: .5 }}
                 >
-                  <SubLink href="/projects" onClick={handleLinkClickAnimation}>Software Engineer.</SubLink>
+                  <SubLink href="/projects" onClick={handleLinkClickAnimation}>Software Engineer</SubLink>
                 </motion.div>
               </span>
             </NoMouseEffect>
