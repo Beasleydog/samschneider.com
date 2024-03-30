@@ -9,7 +9,7 @@ export default function ProjectPage({ title, projectPreviews, columns }) {
     const back = () => {
         setFade(true);
         setTimeout(() => {
-            location.replace("/");
+            location.replace("/#");
         }, 500);
     }
     return (

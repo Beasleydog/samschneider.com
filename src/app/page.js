@@ -1,18 +1,23 @@
 "use client"
 
+import { useEffect, useState } from "react";
 import homeStyles from "./homeStyles.module.css";
 import BouncyText from "@/components/bouncyText/bouncyText";
 import { motion } from "framer-motion";
 import { NoMouseEffect } from "@/components/mouseEffect/mouseEffect";
-import { useState } from "react";
 import MouseEffect from "@/components/mouseEffect/mouseEffect";
 import clsx from "clsx";
 import { FaGithub } from "react-icons/fa";
 
 export default function Home() {
   const [linkAnimation, setLinkAnimation] = useState(false);
+  const [littleAnimations, setLittleAnimations] = useState(true);
 
-  const littleAnimations = !(window.document.referrer && (new URL(window.document.referrer).origin === location.origin));
+  useEffect(() => {
+    setLittleAnimations(!(window.document.referrer && (new URL(window.document.referrer).origin === location.origin)));
+  }, []);
+  // const littleAnimations = !(window.document.referrer && (new URL(window.document.referrer).origin === location.origin));
+  // const littleAnimations = !location.hash;
   function handleLinkClickAnimation() {
     return new Promise((resolve) => {
       setLinkAnimation(true);
