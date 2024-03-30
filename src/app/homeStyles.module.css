@@ -73,7 +73,7 @@
   }
 }
 #contactText{
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   padding-top:1.5rem;
   padding-right: 5rem;
   /* border-top:var(--super-light-main) 3px solid; */
@@ -108,9 +108,16 @@
   padding:.5rem;
   font-size:1.25rem;
   transition:color .2s;
+  position:relative;
 }
 #emailButton:hover{
   color:var(--secondary-color);
+}
+#emailButton:hover span{
+  position:absolute;
+  top:2rem;
+  left:0px;
+  opacity:.5;
 }
 #emailButton:hover a{
   display: inline-block;

@@ -109,7 +109,9 @@ export default function Home() {
                   <a id={homeStyles.socialButtons} href="https://github.com/beasleydog" target="_blank">
                     <FaGithub id={homeStyles.githubButton} className={homeStyles.socialButton} />
                   </a>
-                  <a id={homeStyles.emailButton} href="mailto:samschneider8306@gmail.com">Email Me! <a>👋</a></a>
+                  <a id={homeStyles.emailButton} href="mailto:samschneider8306@gmail.com">
+                    samschneider8306@gmail.com
+                  </a>
                 </div>
               </NoMouseEffect>
             </motion.span>
