@@ -3,9 +3,11 @@ import MouseEffect, { NoMouseEffect } from '@/components/mouseEffect/mouseEffect
 import { motion } from 'framer-motion';
 import { FaArrowLeft } from 'react-icons/fa';
 import ProjectPreview from '@/components/projectPreview/projectPreview';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 export default function ProjectPage({ title, projectPreviews, columns }) {
     const [fade, setFade] = useState(false);
+
+
     const back = () => {
         setFade(true);
         setTimeout(() => {
