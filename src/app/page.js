@@ -11,10 +11,12 @@ import { FaGithub } from "react-icons/fa";
 
 export default function Home() {
   const [linkAnimation, setLinkAnimation] = useState(false);
-  const [littleAnimations, setLittleAnimations] = useState(true);
+  const [littleAnimations, setLittleAnimations] = useState(false);
 
   useEffect(() => {
-    setLittleAnimations(!(window.document.referrer && (new URL(window.document.referrer).origin === location.origin)));
+    const value = !(window.document.referrer && (new URL(window.document.referrer).origin === location.origin));
+    console.log(value);
+    setLittleAnimations(value);
   }, []);
   // const littleAnimations = !(window.document.referrer && (new URL(window.document.referrer).origin === location.origin));
   // const littleAnimations = !location.hash;
@@ -30,15 +32,18 @@ export default function Home() {
   return (
     <MouseEffect>
       <motion.div
+        key={littleAnimations}
         initial={!littleAnimations && { opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={!littleAnimations && { opacity: 1 }}
         transition={{ duration: .5 }}
       >
         <div id="mainWrapper">
+          {littleAnimations}
           <div id={homeStyles.mainText}>
             <div id={homeStyles.welcomeText}>
               <div>
                 <motion.span
+                  key={littleAnimations}
                   style={{ display: "inline-block" }}
                   initial={littleAnimations && { opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -70,8 +75,8 @@ export default function Home() {
                 <motion.div
                   style={{ width: "fit-content" }}
                   initial={littleAnimations && { opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.8, duration: .5 }}
+                  animate={littleAnimations && { opacity: 1, x: 0 }}
+                  transition={littleAnimations && { delay: 1.8, duration: .5 }}
                 >
                   <SubLink href="/sites" onClick={handleLinkClickAnimation}>Website Developer.</SubLink>
                 </motion.div>
