@@ -27,7 +27,7 @@ export default function ProjectPage({ title, projectPreviews, columns }) {
                             <motion.span
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: 1 }}
+                                transition={{ delay: 1.5 }}
                             >
                                 <NoMouseEffect>
                                     <span id={projectPage.backButton} onClick={back}>
@@ -44,7 +44,7 @@ export default function ProjectPage({ title, projectPreviews, columns }) {
                         <motion.span
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 1 }}
+                            transition={{ delay: 1.5 }}
                         >
                             <div id={projectPage.mainContent}
                                 style={{
