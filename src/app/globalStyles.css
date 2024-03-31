@@ -1,5 +1,5 @@
 html{
-    font-size:16px;
+    font-size:1.1vw;
 }
 body{
     width: 100vw;
@@ -14,6 +14,9 @@ body{
     --opposite-main-color:#24d4c6;
     --secondary-color:#E4626D;
     --super-light-main:#F6CBCE;
+
+    --accent-color:#FA8334;
+    --light-accent:#F9A826;
 
     --black:#070707;
     --light-black:#40434E;

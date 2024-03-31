@@ -7,6 +7,15 @@ import { motion } from "framer-motion";
 import { NoMouseEffect } from "@/components/mouseEffect/mouseEffect";
 import MouseEffect from "@/components/mouseEffect/mouseEffect";
 import clsx from "clsx";
+
+//Skills icons
+import { IoLogoJavascript, IoLogoFirebase } from "react-icons/io5";
+import { SiTypescript, SiMongodb } from "react-icons/si";
+import { FaHtml5, FaPython, FaJava, FaNodeJs, FaReact } from "react-icons/fa";
+import { FaCss3Alt } from "react-icons/fa";
+
+
+//Social Icons
 import { FaGithub } from "react-icons/fa";
 
 export default function Home() {
@@ -28,7 +37,7 @@ export default function Home() {
       }, 1000);
     });
   }
-
+  console.log(homeStyles.email);
   return (
     <MouseEffect>
       <motion.div
@@ -37,8 +46,28 @@ export default function Home() {
         animate={!littleAnimations && { opacity: 1 }}
         transition={{ duration: .5 }}
       >
-        <div id="mainWrapper">
+        <div id={homeStyles.mainWrapper}>
           {littleAnimations}
+          <motion.span
+            initial={littleAnimations && { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.4, duration: .5 }}
+          >
+            <NoMouseEffect>
+              <div id={homeStyles.skillsText}>
+                <div id={homeStyles.skillIcons}>
+                  <FaNodeJs title="Node JS" className={homeStyles.skillIcon} />
+                  <FaHtml5 title="HTML" className={homeStyles.skillIcon} />
+                  <FaCss3Alt title="CSS" className={homeStyles.skillIcon} />
+                  <FaJava title="Java" className={homeStyles.skillIcon} />
+                  <FaPython title="Python" className={homeStyles.skillIcon} />
+                  <FaReact title="React" className={homeStyles.skillIcon} />
+                  <SiMongodb title="MongoDB" className={homeStyles.skillIcon} />
+                  <IoLogoFirebase title="Firebase" className={homeStyles.skillIcon} />
+                </div>
+              </div>
+            </NoMouseEffect>
+          </motion.span>
           <div id={homeStyles.mainText}>
             <div id={homeStyles.welcomeText}>
               <div>
@@ -98,7 +127,6 @@ export default function Home() {
                 </motion.div>
               </span>
             </NoMouseEffect>
-
             <motion.span
               initial={littleAnimations && { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -109,9 +137,16 @@ export default function Home() {
                   <a id={homeStyles.socialButtons} href="https://github.com/beasleydog" target="_blank">
                     <FaGithub id={homeStyles.githubButton} className={homeStyles.socialButton} />
                   </a>
-                  <a id={homeStyles.emailButton} href="mailto:samschneider8306@gmail.com">
-                    samschneider8306@gmail.com
-                  </a>
+                  <span id={homeStyles.emailText}>
+                    Currently looking for freelance work.
+                    <br />
+                    <a id={homeStyles.emailButton} href="mailto:samschneider8306@gmail.com">
+                      Reach out at
+                      <span id={homeStyles.email}>
+                        samschneider8306@gmail.com
+                      </span>
+                    </a>
+                  </span>
                 </div>
               </NoMouseEffect>
             </motion.span>
@@ -120,7 +155,7 @@ export default function Home() {
           </div>
         </div >
       </motion.div >
-    </MouseEffect>
+    </MouseEffect >
   );
 }
 function SubLink({ children, href, onClick }) {

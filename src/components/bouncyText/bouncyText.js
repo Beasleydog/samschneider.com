@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import bouncyText from "./bouncyText.module.css"
 import useMouseAcceleration from 'react-mouse-acceleration';
 
-export default function BouncyText({ children, direction, bounceScale }) {
+export default function BouncyText({ children, direction, bounceScale, style, id, className, letterStyle }) {
     if (!direction) direction = "vertical";
 
     const mouseAcceleration = useMouseAcceleration();
@@ -73,16 +73,16 @@ export default function BouncyText({ children, direction, bounceScale }) {
         });
     }
     return (
-        <span>
+        <span style={style} id={id} className={className}>
             {characters.map((character, index) => (
-                <BouncyCharacter key={index} index={index} onHover={onCharHovered} direction={direction} offset={states[index].offset}>
+                <BouncyCharacter style={letterStyle} key={index} index={index} onHover={onCharHovered} direction={direction} offset={states[index].offset}>
                     {character === " " ? <>&nbsp;</> : character}
                 </BouncyCharacter>
             ))}
         </span>
     )
 }
-function BouncyCharacter({ children, onHover, index, offset, direction }) {
+function BouncyCharacter({ children, onHover, index, offset, direction, style }) {
     const offsetEffect = {}
     if (direction === "vertical") {
         offsetEffect.transform = `translateY(${offset}px)`;
@@ -98,7 +98,10 @@ function BouncyCharacter({ children, onHover, index, offset, direction }) {
             key={index}
             onMouseOver={() => { onHover(index) }}
             className={bouncyText.bouncyCharacter}
-            style={offsetEffect}
+            style={{
+                ...offsetEffect,
+                ...style
+            }}
         >
             {children}
         </span>

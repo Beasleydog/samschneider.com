@@ -12,7 +12,7 @@ export const ballCombine = {
 }
 export const blackOutPoem = {
     name: "Collaborative Blackout Poem",
-    description: "A collaborative black out poem generator.",
+    description: "A collaborative blackout poem generator.",
     url: "https://blackoutpoem.vercel.app",
     imageUrl: "/images/blackOutPoem.png"
 }
@@ -36,13 +36,13 @@ export const guitarChess = {
 }
 export const planscape = {
     name: "Planscape",
-    description: "A physics based game that teaches about resiliency.",
+    description: "A physics-based game that teaches about resiliency.",
     url: "https://beasleydog.github.io/planscape/",
     imageUrl: "/images/planscape.png"
 }
 export const scrambled = {
     name: "Scrambled",
-    description: "A word scramble game with a side of global warming.",
+    description: "A word scramble with a side of global warming.",
     url: "https://beasleydog.github.io/tiletalk/build/",
     imageUrl: "/images/scrambled.png"
 }

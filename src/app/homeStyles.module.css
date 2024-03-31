@@ -1,6 +1,9 @@
+#mainWrapper{
+  display:flex;
+}
 #mainText{
-  margin-top:8rem;
-  margin-left:8rem;
+  margin-top:3rem;
+  margin-left:3.5rem;
   font-weight: bold;
   display: flex;
     flex-direction: column;
@@ -73,7 +76,7 @@
   }
 }
 #contactText{
-  margin-top: 2rem;
+  margin-top: 6rem;
   padding-top:1.5rem;
   padding-right: 5rem;
   /* border-top:var(--super-light-main) 3px solid; */
@@ -102,7 +105,7 @@
 .socialButton:hover{
   fill:var(--secondary-color)
 }
-#emailButton{
+#emailText{
   border-radius:2rem;
   text-decoration: none;
   padding:.5rem;
@@ -110,28 +113,25 @@
   transition:color .2s;
   position:relative;
 }
-#emailButton:hover{
+#emailButton{
+  text-decoration: none;
+}
+#email{
+  background: linear-gradient(45deg, var(--secondary-color),var(--light-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+  margin-left: .5rem;
+}
+
+#skillIcons{
+  display: flex;
+  flex-direction: column;
+  margin-left: 3.5rem;
+  margin-top: 3.5rem;
+}
+.skillIcon{
   color:var(--secondary-color);
-}
-#emailButton:hover span{
-  position:absolute;
-  top:2rem;
-  left:0px;
-  opacity:.5;
-}
-#emailButton:hover a{
-  display: inline-block;
-  transform-origin: 100% 100%;
-  animation: wave .5s infinite;
-}
-@keyframes wave{
-  0%{
-    transform:rotate(0deg);
-  }
-  50%{
-    transform:rotate(10deg);
-  }
-  100%{
-    transform:rotate(0deg);
-  }
+  font-size: 2.5rem;
+  color:var(--light-black)
 }
