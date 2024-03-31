@@ -1,5 +1,4 @@
 import { Raleway } from "next/font/google";
-import Header from "./header";
 import "./globalStyles.css";
 const inter = Raleway({ subsets: ["latin"] });
 
