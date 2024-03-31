@@ -87,7 +87,7 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: .5, delay: .8 }}
                   >
-                    I'm
+                    I&apos;m
                   </motion.span>
                 }
               </motion.span>
