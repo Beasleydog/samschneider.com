@@ -50,8 +50,8 @@ export default function Home() {
         <div id={homeStyles.mainWrapper}>
           {littleAnimations}
           <motion.span
-            initial={littleAnimations && { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={littleAnimations && { opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 2.4, duration: .5 }}
           >
             <NoMouseEffect>
