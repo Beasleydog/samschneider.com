@@ -68,3 +68,23 @@
     gap:4rem;
     padding:4rem;
 }
+
+@media (max-width: 500px){
+    #mainContainer{
+        width:100%
+    }
+    #mainContent{
+        grid-template-columns: 1fr !important;
+    }
+    #headerText{
+        font-size: 10rem;
+    }
+    #backButton{
+        font-size:3rem;
+    }
+    .thingFull{
+        transition:clip-path .3s !important;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 13rem, 0% 13rem) !important;
+        z-index:2;
+    }
+}

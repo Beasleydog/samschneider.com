@@ -1,7 +1,6 @@
 #mainContainer{
-    width: 100%;
     aspect-ratio: 2048/972;
-    border:var(--black) solid 7px;
+    border:var(--black) solid .5rem;
     border-radius:1rem;
     overflow:hidden;
     position:relative;

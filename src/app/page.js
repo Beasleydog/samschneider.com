@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { NoMouseEffect } from "@/components/mouseEffect/mouseEffect";
 import MouseEffect from "@/components/mouseEffect/mouseEffect";
 import clsx from "clsx";
+import useOnMobile from "@/components/onMobile/onMobile";
 
 //Skills icons
 import { IoLogoJavascript, IoLogoFirebase } from "react-icons/io5";
@@ -21,14 +22,14 @@ import { FaGithub } from "react-icons/fa";
 export default function Home() {
   const [linkAnimation, setLinkAnimation] = useState(false);
   const [littleAnimations, setLittleAnimations] = useState(false);
+  const onMobile = useOnMobile();
 
   useEffect(() => {
     const value = !(window.document.referrer && (new URL(window.document.referrer).origin === location.origin));
     console.log(value);
     setLittleAnimations(value);
   }, []);
-  // const littleAnimations = !(window.document.referrer && (new URL(window.document.referrer).origin === location.origin));
-  // const littleAnimations = !location.hash;
+
   function handleLinkClickAnimation() {
     return new Promise((resolve) => {
       setLinkAnimation(true);
@@ -70,34 +71,42 @@ export default function Home() {
           </motion.span>
           <div id={homeStyles.mainText}>
             <div id={homeStyles.welcomeText}>
-              <div>
-                <motion.span
-                  key={littleAnimations}
-                  style={{ display: "inline-block" }}
-                  initial={littleAnimations && { opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: .5 }}
-                >
-                  Hi,
-                </motion.span>
-                <br />
-                <motion.span
-                  style={{ display: "inline-block" }}
-                  initial={littleAnimations && { opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1, duration: .5 }}
-                >
-                  I`m
-                  <NoMouseEffect>
-                    <span id={homeStyles.samName}>
-                      <BouncyText>
-                        Sam Schneider
-                      </BouncyText>
+              <motion.span
+                key={littleAnimations}
+                style={{ display: "inline-block" }}
+                initial={littleAnimations && { opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: .5 }}
+              >
+                Hi,
+                {onMobile &&
+                  <motion.span
+                    key={littleAnimations}
+                    style={{ display: "inline-block", marginLeft: "2rem" }}
+                    initial={littleAnimations && { opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: .5, delay: .8 }}
+                  >
+                    I'm
+                  </motion.span>
+                }
+              </motion.span>
+              <motion.div
+                style={{ display: "block" }}
+                initial={littleAnimations && { opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: .5 }}
+              >
+                <NoMouseEffect>
+                  {!onMobile && " I'm"}
+                  <span id={homeStyles.samName}>
+                    <BouncyText>
+                      Sam Schneider
+                    </BouncyText>
 
-                    </span>
-                  </NoMouseEffect>
-                </motion.span>
-              </div>
+                  </span>
+                </NoMouseEffect>
+              </motion.div>
             </div>
             <NoMouseEffect style={{ width: "fit-content" }}>
               <span id={homeStyles.subText}>
@@ -127,9 +136,9 @@ export default function Home() {
                 </motion.div>
               </span>
             </NoMouseEffect>
-            <motion.span
-              initial={littleAnimations && { opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+            <motion.div
+              initial={littleAnimations && { opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ delay: 2.4, duration: .5 }}
             >
               <NoMouseEffect>
@@ -149,7 +158,7 @@ export default function Home() {
                   </span>
                 </div>
               </NoMouseEffect>
-            </motion.span>
+            </motion.div>
           </div>
           <div id={homeStyles.thing} className={clsx(linkAnimation && homeStyles.thingCover)}>
           </div>
