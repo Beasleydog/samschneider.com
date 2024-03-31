@@ -3,10 +3,25 @@ import MouseEffect, { NoMouseEffect } from '@/components/mouseEffect/mouseEffect
 import { motion } from 'framer-motion';
 import { FaArrowLeft } from 'react-icons/fa';
 import ProjectPreview from '@/components/projectPreview/projectPreview';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import clsx from 'clsx';
 export default function ProjectPage({ title, projectPreviews, columns }) {
     const [fade, setFade] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [reveal, setReveal] = useState(false);
+    const mainRef = useRef();
+    useEffect(() => {
+        mainRef.current.addEventListener("scroll", () => {
+            console.log(mainRef.current.scrollTop);
+            if (mainRef.current.scrollTop > 0) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        });
 
+        setReveal(true);
+    }, []);
 
     const back = () => {
         setFade(true);
@@ -22,8 +37,10 @@ export default function ProjectPage({ title, projectPreviews, columns }) {
                 transition={{ duration: .5 }}
             >
                 <MouseEffect>
-                    <div id={projectPage.mainContainer}>
-                        <div id={projectPage.thing} />
+                    <div ref={mainRef} id={projectPage.mainContainer}>
+                        <div id={projectPage.thing} className={clsx(
+                            scrolled && projectPage.thingFull,
+                            reveal ? projectPage.thingCut : projectPage.thingHide)} />
 
                         <div id={projectPage.headerContainer}>
                             <motion.span
