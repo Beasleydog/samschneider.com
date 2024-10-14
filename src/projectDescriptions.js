@@ -13,7 +13,7 @@ export const ballCombine = {
 export const blackOutPoem = {
   name: "Collaborative Blackout Poem",
   description: "A collaborative blackout poem generator.",
-  url: "https://blackoutpoem.vercel.app",
+  url: "https://blackoutpoem.glitch.me/",
   imageUrl: "/images/blackOutPoem.png",
 };
 export const customTab = {
